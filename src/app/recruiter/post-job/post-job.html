@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="sidebar">
+    <h2>Recruiter Panel</h2>
+    <ul>
+      <li><a href="/home">🏠 Home</a></li>
+      <li><a href="/post-job">➕ Post a Job</a></li>
+      <li><a href="/rview">📄 View Jobs</a></li>
+      <li><a href="/rapplicants">👨‍💼 Applicants</a></li>
+      <li><a href='/settings'>⚙️ Settings</a></li>
+      <li><a href="/dashboard">🔓 Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="post-job-container">
+      <h2>📝 Post a New Job</h2>
+
+      <form (ngSubmit)="onSubmit()" class="job-form">
+        <label>Job Title</label>
+        <input type="text" [(ngModel)]="jobData.title" name="title" required />
+
+        <label>Company Name</label>
+        <input type="text" [(ngModel)]="jobData.company" name="company" required />
+
+        <label>Location</label>
+        <input type="text" [(ngModel)]="jobData.location" name="location" required />
+
+        <label>Job Type</label>
+        <select [(ngModel)]="jobData.type" name="type" required>
+          <option value="">Select Type</option>
+          <option value="Internship">Internship</option>
+          <option value="Full-Time">Full-Time</option>
+          <option value="Part-Time">Part-Time</option>
+        </select>
+
+        <label>Required Skills</label>
+        <input type="text" [(ngModel)]="jobData.skills" name="skills" required />
+
+        <label>Job Description</label>
+        <textarea [(ngModel)]="jobData.description" name="description" rows="5" required></textarea>
+
+        <button type="submit" class="btn-primary">Post Job</button>
+        <p class="error" *ngIf="message">{{ message }}</p>
+      </form>
+    </div>
+  </div>
+</div>

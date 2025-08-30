@@ -1,0 +1,40 @@
+<!-- Sidebar + Job Listing Page -->
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>InternLink</h2>
+    <ul class="nav-links">
+      <li><a href="/rdashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+      <li><a href="/post-job"><i class="bi bi-plus-circle"></i> Post Job</a></li>
+      <li><a href="/rview"><i class="bi bi-briefcase"></i> My Jobs</a></li>
+      <li><a href="/rapplicants"><i class="bi bi-person-lines-fill"></i> Applicants</a></li>
+      <li><a href='/settings'><i class="bi bi-gear"></i> Settings</a></li>
+      <li><a href="/profile"><i class="bi bi-person-circle"></i> Profile</a></li>
+      <li><a href="/dashbord" class="logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>📄 Available Job Listings</h1>
+
+    <div *ngIf="loading">Loading jobs...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div class="job-card-list" *ngIf="!loading && jobs.length > 0">
+      <div class="job-card" *ngFor="let job of jobs">
+        <h3>{{ job.title }}</h3>
+        <p><strong>Company:</strong> {{ job.company }}</p>
+        <p><strong>Location:</strong> {{ job.location }}</p>
+        <p><strong>Type:</strong> {{ job.type }}</p>
+        <p><strong>Skills:</strong> {{ job.skills }}</p>
+        <p><strong>Posted At:</strong> {{ job.posted_at | date: 'short' }}</p>
+        <a href='/detials' class="btn-outline">Details</a>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && jobs.length === 0">
+      <p>No jobs available at the moment.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="resume-list-container">
+  <h2>📄 Submitted Resumes</h2>
+
+  <div *ngIf="loading">Loading resumes...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && resumes.length > 0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Education</th>
+        <th>Skills</th>
+        <th>Experience</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resume of resumes">
+        <td>{{ resume.name }}</td>
+        <td>{{ resume.email }}</td>
+        <td>{{ resume.phone }}</td>
+        <td>{{ resume.education }}</td>
+        <td>{{ resume.skills }}</td>
+        <td>{{ resume.work_experience }}</td>
+        <td>
+          <button (click)="viewResume(resume.resume_file)">View</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && resumes.length === 0">
+    <p>No resumes found.</p>
+  </div>
+</div>
